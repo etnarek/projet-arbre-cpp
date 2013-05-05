@@ -14,18 +14,18 @@ Tree * Tree::getSubTreeL() const{
 Tree * Tree::getSubTreeR() const{
     return subTreeR;
 }
-string Tree::getInfo() const{
+string Tree::getInfo(){
     return info;
 }
 
 // Setteur
-void Tree::setSubTreeL(Tree &newLeft){
+void Tree::setSubTreeL(Tree *newLeft){
     delete subTreeL;
-    subTreeL = &newLeft;
+    subTreeL = newLeft;
 }
-void Tree::setSubTreeR(Tree &newRight){
+void Tree::setSubTreeR(Tree *newRight){
     delete subTreeR;
-    subTreeR = &newRight;
+    subTreeR = newRight;
 }
 void Tree::setInfo(string newInfo){
     info = newInfo;
@@ -86,7 +86,7 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
     subTreeR = snewSbTreeR;
 }
 Tree::Tree(Tree const& tree){
-    info = tree.getInfo();
+    info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
     }

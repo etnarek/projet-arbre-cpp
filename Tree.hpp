@@ -17,10 +17,10 @@ public:
     // Getteurs
     Tree * getSubTreeL() const;
     Tree * getSubTreeR() const;
-    std::string getInfo() const;
+    std::string getInfo();
     // Setteurs
-    void setSubTreeL(Tree &newLeft);
-    void setSubTreeR(Tree &newRight);
+    void setSubTreeL(Tree *newLeft);
+    void setSubTreeR(Tree *newRight);
     void setInfo(std::string newInfo);
 
     void generateRandomTree();
