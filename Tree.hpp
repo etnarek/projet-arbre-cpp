@@ -10,8 +10,8 @@ public:
     // Constructeurs
     Tree();
     Tree(std::string newInfo);
-    Tree(std::string newInfo, Tree &newSubTreeL);
-    Tree(std::string newInfo, Tree &newSubTreeL, Tree &newSubTreeR);
+    Tree(std::string newInfo, Tree *newSubTreeL);
+    Tree(std::string newInfo, Tree *newSubTreeL, Tree *newSubTreeR);
     Tree(Tree const& tree);
 
     // Getteurs

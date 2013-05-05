@@ -44,15 +44,15 @@ Tree::Tree(string newInfo){
     subTreeL = NULL;
     subTreeR = NULL;
 }
-Tree::Tree(string newInfo, Tree &newSubTreeL){
+Tree::Tree(string newInfo, Tree *newSubTreeL){
     info = info;
-    subTreeL = &newSubTreeL;
+    subTreeL = newSubTreeL;
     subTreeR = NULL;
 }
-Tree::Tree(string newInfo, Tree &newSubTreeL, Tree &snewSbTreeR){
+Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
     info = info;
-    subTreeL = &newSubTreeL;
-    subTreeR = &snewSbTreeR;
+    subTreeL = newSubTreeL;
+    subTreeR = snewSbTreeR;
 }
 Tree::Tree(Tree const& tree){ ///////////////////////////////////////////
     // info = tree.getInfo();
