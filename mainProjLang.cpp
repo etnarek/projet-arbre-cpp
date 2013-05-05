@@ -8,7 +8,6 @@ const int nbMaxTry=35;
 
 int main()
 {
-	cout<< "hello";
 	Tree initial,C,*ref,*ref2;
 	
 	initial.generateRandomTree();
