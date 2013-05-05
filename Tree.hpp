@@ -2,6 +2,7 @@
 #define DEF_TREE
 
 #include <string>
+#include <iostream>
 
 class Tree
 {
@@ -15,20 +16,20 @@ public:
     // Getteurs
     Tree getSubTreeL();
     Tree getSubTreeR();
-    Tree getInfo();
+    std::string getInfo();
     // Setteurs
     void setSubTreeL(Tree &newLeft);
     void setSubTreeR(Tree &newRight);
-    void setInfo(std::string newRootVal);
+    void setInfo(std::string newInfo);
     void generateRandomTree();
 
     // destructeur
     ~Tree();
 
 private:
-    Tree subTreeL*;
-    Tree subTreeR*;
-    string info;
+    Tree *subTreeL;
+    Tree *subTreeR;
+    std::string info;
 };
 
 #endif
