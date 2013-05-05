@@ -8,10 +8,10 @@ SplitGame::SplitGame(Tree &newStartTree, Tree const &newEndTree, int newMaxTry){
 }
 
 bool SplitGame::isIdentic(){
-
+    return startTree == endTree;
 }
 void SplitGame::trig(){
-
+    
 }
 
 // Destructeur
