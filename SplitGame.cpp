@@ -13,7 +13,7 @@ bool SplitGame::isIdentic(){
 void SplitGame::trig(){
     trigRecurse(startTree);
 }
-bool SplitGame::trigRecurse(Tree *tree){
+bool SplitGame::trigRecurse(Tree *tree){ ////////////////////////////////////////
     return true;
 }
 

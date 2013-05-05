@@ -28,7 +28,8 @@ void Tree::setSubTreeR(Tree &newRight){
 void Tree::setInfo(string newInfo){
     info = newInfo;
 }
-void Tree::generateRandomTree(){
+
+void Tree::generateRandomTree(){ /////////////////////////////////////////////////////////////////////////////////
 
 }
 
@@ -52,6 +53,21 @@ Tree::Tree(string newInfo, Tree &newSubTreeL, Tree &snewSbTreeR){
     info = info;
     subTreeL = &newSubTreeL;
     subTreeR = &snewSbTreeR;
+}
+Tree::Tree(Tree const& tree){ ///////////////////////////////////////////
+    // info = tree.getInfo();
+    // if(tree.getSubTreeL() != NULL){
+    //     *subTreeL = new Tree(*tree.getSubTreeL());
+    // }
+    // else{
+    //     subTreeL = NULL;
+    // }
+    // if(tree.getSubTreeR() != NULL){
+    //     *subTreeR = new Tree(*tree.getSubTreeR());
+    // }
+    // else{
+    //     subTreeR = NULL;
+    // }
 }
 
 // Destructeur
