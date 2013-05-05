@@ -5,12 +5,12 @@
 using namespace std;
 
 // Getteurs
-Tree Tree::getSubTreeL(){
-    return *subTreeL;
+Tree * Tree::getSubTreeL() const{
+    return subTreeL;
 }
 
-Tree Tree::getSubTreeR(){
-    return *subTreeR;
+Tree * Tree::getSubTreeR() const{
+    return subTreeR;
 }
 string Tree::getInfo(){
     return info;
@@ -62,4 +62,28 @@ Tree::~Tree(){
     if(subTreeR != NULL){
         delete subTreeR;
     }
+}
+
+// Surcharge d'opérateur
+bool operator==(Tree const& self, Tree const& other){
+    bool equal = false;
+    if(self.getSubTreeR()!=NULL){
+        if(other.getSubTreeR()!=NULL){
+            equal = self.getSubTreeR() == other.getSubTreeR();
+        }
+        else{
+            equal = false;
+        }
+    }
+    if(equal){
+        if(self.getSubTreeL()!=NULL){
+            if(other.getSubTreeL()!=NULL){
+                equal = self.getSubTreeL() == other.getSubTreeL();
+            }
+            else{
+                equal = false;
+            }
+        }
+    }
+    return equal;
 }
