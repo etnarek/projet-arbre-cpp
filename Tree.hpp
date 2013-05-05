@@ -12,11 +12,12 @@ public:
     Tree(std::string newInfo);
     Tree(std::string newInfo, Tree &newSubTreeL);
     Tree(std::string newInfo, Tree &newSubTreeL, Tree &newSubTreeR);
+    Tree(Tree const& tree);
 
     // Getteurs
     Tree * getSubTreeL() const;
     Tree * getSubTreeR() const;
-    std::string getInfo();
+    std::string getInfo() const;
     // Setteurs
     void setSubTreeL(Tree &newLeft);
     void setSubTreeR(Tree &newRight);

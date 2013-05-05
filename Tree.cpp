@@ -12,7 +12,7 @@ Tree * Tree::getSubTreeL() const{
 Tree * Tree::getSubTreeR() const{
     return subTreeR;
 }
-string Tree::getInfo(){
+string Tree::getInfo() const{
     return info;
 }
 
