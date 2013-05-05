@@ -14,9 +14,6 @@ public:
     bool isIdentic();
     void trig();
 
-    // Destructeur
-    ~SplitGame();
-
     static bool trigRecurse(Tree *tree);
 private:
     int maxTry;

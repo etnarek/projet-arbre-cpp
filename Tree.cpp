@@ -71,17 +71,17 @@ Tree::Tree(){
     subTreeR = NULL;
 }
 Tree::Tree(string newInfo){
-    info = info;
+    info = newInfo;
     subTreeL = NULL;
     subTreeR = NULL;
 }
 Tree::Tree(string newInfo, Tree *newSubTreeL){
-    info = info;
+    info = newInfo;
     subTreeL = newSubTreeL;
     subTreeR = NULL;
 }
 Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
-    info = info;
+    info = newInfo;
     subTreeL = newSubTreeL;
     subTreeR = snewSbTreeR;
 }
