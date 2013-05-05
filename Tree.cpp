@@ -71,23 +71,33 @@ Tree::~Tree(){
 }
 
 // Surcharge d'opérateur
-bool operator==(Tree const& self, Tree const& other){
+bool Tree::operator==(Tree const& other){
     bool equal = false;
-    if(self.getSubTreeR()!=NULL){
+    if(this->getSubTreeR() != NULL){
         if(other.getSubTreeR()!=NULL){
-            equal = self.getSubTreeR() == other.getSubTreeR();
+            equal = this->getSubTreeR() == other.getSubTreeR();
         }
-        else{
-            equal = false;
+            else{
+                equal = false;
+            }
+        }   
+    else{
+        if(other.getSubTreeR() == NULL){
+            equal = true;
         }
     }
     if(equal){
-        if(self.getSubTreeL()!=NULL){
+        if(this->getSubTreeL()!=NULL){
             if(other.getSubTreeL()!=NULL){
-                equal = self.getSubTreeL() == other.getSubTreeL();
+                equal = this->getSubTreeL() == other.getSubTreeL();
             }
-            else{
-                equal = false;
+                else{
+                    equal = false;
+                }
+        }
+        else{
+            if(other.getSubTreeL() == NULL){
+                equal = true;
             }
         }
     }

@@ -24,6 +24,7 @@ public:
     void setInfo(std::string newInfo);
 
     void generateRandomTree();
+    bool operator==(Tree const& other);
 
     // destructeur
     ~Tree();
