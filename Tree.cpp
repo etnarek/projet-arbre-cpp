@@ -54,10 +54,19 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
     subTreeR = snewSbTreeR;
 }
 Tree::Tree(Tree const& tree){
-    cout << "hello"<< endl;
     info = tree.getInfo();
-    subTreeL = new Tree(*tree.getSubTreeL());
-    subTreeR = new Tree(*tree.getSubTreeR());
+    if(tree.getSubTreeL() != NULL){
+        subTreeL = new Tree(*tree.getSubTreeL());
+    }
+    else{
+        subTreeL = NULL;
+    }
+    if(tree.getSubTreeR() != NULL){
+        subTreeR = new Tree(*tree.getSubTreeR());
+    }
+    else{
+        subTreeR = NULL;
+    }
 }
 
 // Destructeur
