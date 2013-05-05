@@ -11,7 +11,10 @@ bool SplitGame::isIdentic(){
     return startTree == endTree;
 }
 void SplitGame::trig(){
-    
+    trigRecurse(startTree);
+}
+bool SplitGame::trigRecurse(Tree *tree){
+    return true;
 }
 
 // Destructeur

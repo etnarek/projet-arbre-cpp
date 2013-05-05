@@ -17,10 +17,12 @@ public:
     // Destructeur
     ~SplitGame();
 
+    static bool trigRecurse(Tree *tree);
 private:
     int maxTry;
     Tree *startTree;
     const Tree *endTree;
+
 };
 
 #endif
