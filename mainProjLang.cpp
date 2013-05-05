@@ -8,6 +8,7 @@ const int nbMaxTry=35;
 
 int main()
 {
+	cout<< "hello";
 	Tree initial,C,*ref,*ref2;
 	
 	initial.generateRandomTree();
@@ -16,7 +17,7 @@ int main()
 
 	SplitGame Game1(initial,final,nbMaxTry);
 	cout<< "Les arbres sont identiques en terme de structure? " << Game1.isIdentic() << endl;
-	cout<< "mais pas leur adresses?"<< &initial!= &final << endl;
+	cout<< "mais pas leur adresses?"<< (&initial!= &final) << endl;
 	
 	C=final;
 	SplitGame Game2(C,final,nbMaxTry);
