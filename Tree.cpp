@@ -1,6 +1,7 @@
 #include "Tree.hpp"
 #include <ctime> 
 #include <cstdlib>
+#include <stdio.h>
 
 int Tree::maxDeep = 10;
 
@@ -32,36 +33,40 @@ void Tree::setInfo(string newInfo){
 }
 
 void Tree::generateRandomTree(){ //////////////////////////////////////////////////////////////// problem avec les current non transf en int.
-    // srand(time(0));
-    // int current = 1;
-    // info = current;
-    // int i=0;
-    // Tree node = *this;
-    // bool end = false;
-    // int random = 0;
-    // // char c = '0'
+    srand(time(0));
+    int current = 1;
+    info = current;
+    int i=0;
+    Tree node = *this;
+    bool end = false;
+    int random = 0;
+    char letter[2];
 
-    // while(i<maxDeep && !end){
-    //     random = rand() % 4;
-    //     switch (random){
-    //         case 0:
-    //             node.setSubTreeL(Tree('0' + current));
-    //             node.setSubTreeR(Tree('0' + current));
-    //             if(rand()%2)
-    //                 node = node.getSubTreeL();
-    //             else
-    //                 node = node.getSubTreeR();
-    //             break;
-    //         case 1:
-    //             node.setSubTreeL(Tree('0' + current));
-    //             node = node.getSubTreeL();
-    //         case 2:
-    //             node.subTreeR(Tree('0' + current));
-    //             node = node.getSubTreeR();
-    //         default:
-    //             end = true;
-    //     }
-    // }
+    while(i<maxDeep && !end){
+        random = rand() % 4;
+        switch (random){
+            case 0:
+                sprintf(letter, "%d", ++current);
+                node.setSubTreeL(new Tree(letter));
+                sprintf(letter, "%d", ++current);
+                node.setSubTreeR(new Tree(letter));
+                if(rand()%2)
+                    node = *node.getSubTreeL();
+                else
+                    node = *node.getSubTreeR();
+                break;
+            case 1:
+                sprintf(letter, "%d", ++current);
+                node.setSubTreeL(new Tree(letter));
+                node = *node.getSubTreeL();
+            case 2:
+                sprintf(letter, "%d", ++current);
+                node.setSubTreeR(new Tree(letter));
+                node = *node.getSubTreeR();
+            default:
+                end = true;
+        }
+    }
 }
 
 // Constructeurs
