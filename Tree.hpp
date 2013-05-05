@@ -9,9 +9,9 @@ class Tree
 public:
     // Constructeurs
     Tree();
-    Tree(std::string info);
-    Tree(std::string info, Tree &subTreeL);
-    Tree(std::string info, Tree &subTreeL, Tree &subTreeR);
+    Tree(std::string newInfo);
+    Tree(std::string newInfo, Tree &newSubTreeL);
+    Tree(std::string newInfo, Tree &newSubTreeL, Tree &newSubTreeR);
 
     // Getteurs
     Tree getSubTreeL();
