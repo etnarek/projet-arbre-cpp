@@ -1,5 +1,3 @@
-// #include <iostream>
-// #include <string>
 #include "Tree.hpp"
 
 using namespace std;
@@ -55,19 +53,7 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
     subTreeR = snewSbTreeR;
 }
 Tree::Tree(Tree const& tree){ ///////////////////////////////////////////
-    // info = tree.getInfo();
-    // if(tree.getSubTreeL() != NULL){
-    //     *subTreeL = new Tree(*tree.getSubTreeL());
-    // }
-    // else{
-    //     subTreeL = NULL;
-    // }
-    // if(tree.getSubTreeR() != NULL){
-    //     *subTreeR = new Tree(*tree.getSubTreeR());
-    // }
-    // else{
-    //     subTreeR = NULL;
-    // }
+
 }
 
 // Destructeur
