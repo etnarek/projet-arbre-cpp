@@ -32,6 +32,7 @@ private:
     Tree *subTreeL;
     Tree *subTreeR;
     std::string info;
+    static int maxDeep;
 };
 
 #endif

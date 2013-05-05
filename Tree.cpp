@@ -1,4 +1,5 @@
 #include "Tree.hpp"
+int maxDeep = 10;
 
 using namespace std;
 
