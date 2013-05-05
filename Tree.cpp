@@ -32,7 +32,7 @@ void Tree::setInfo(string newInfo){
     info = newInfo;
 }
 
-void Tree::generateRandomTree(){ //////////////////////////////////////////////////////////////// problem avec les current non transf en int.
+void Tree::generateRandomTree(){
     srand(time(0));
     int current = 1;
     info = current;
