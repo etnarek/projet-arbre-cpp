@@ -79,8 +79,31 @@ void SplitGame::extend(Tree *tree, bool left){
         newNode->setSubTreeR(oldNode->getSubTreeR());
     oldNode->setSubTreeR(NULL);
     oldNode->setSubTreeL(newNode);
+    if(left){
+        tree->setSubTreeL(newNode);
+    }
+    else{
+        tree->setSubTreeR(newNode);
+    }
 
 }
 void SplitGame::split(Tree *tree, bool left){
+    Tree *oldNode;
+    Tree *newNode;
+    newNode = new Tree();
+    if(left){
+        oldNode = tree->getSubTreeL();
+    }
+    else{
+        oldNode = tree->getSubTreeR();
+    }
+    newNode->setSubTreeL(oldNode);
+    newNode->setSubTreeR(new Tree(*oldNode));
+    if(left){
+        tree->setSubTreeL(newNode);
+    }
+    else{
+        tree->setSubTreeR(newNode);
+    }
 
 }
