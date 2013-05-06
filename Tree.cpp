@@ -45,12 +45,14 @@ void Tree::generateRandomTree(int deep){
                 break;
             case 1:
                 subTreeL = new Tree("7");
+                subTreeR = NULL;
                 cout << "subTreeR"<<subTreeR<<endl;
                 cout << "subTreeL"<<subTreeL<<endl;
                 subTreeL->generateRandomTree(deep + 1);
                 break;
             case 2:
                 subTreeR = new Tree("8");
+                subTreeL = NULL;
                 subTreeR->generateRandomTree(deep + 1);
                 break;
         }
@@ -80,28 +82,12 @@ void Tree::delation(bool left){
 }
 
 // Constructeurs
-Tree::Tree(){
-    info = "";
-    subTreeL = NULL;
-    subTreeR = NULL;
-}
-Tree::Tree(string newInfo){
-    info = newInfo;
-    subTreeL = NULL;
-    subTreeR = NULL;
-}
-Tree::Tree(string newInfo, Tree *newSubTreeL){
-    info = newInfo;
-    subTreeL = newSubTreeL;
-    subTreeR = NULL;
-}
 Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
     info = newInfo;
     subTreeL = newSubTreeL;
     subTreeR = newSubTreeR;
 }
 Tree::Tree(Tree const& tree){
-    cout<<"copy"<<endl;
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
@@ -120,11 +106,9 @@ Tree::Tree(Tree const& tree){
 // Destructeur
 Tree::~Tree(){
     if(subTreeL != NULL){
-        cout<<"left"<<subTreeL<<endl;
         delete subTreeL;
     }
     if(subTreeR != NULL){
-        cout << "right"<<subTreeR<<endl;
         delete subTreeR;
     }
 }
