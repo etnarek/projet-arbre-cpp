@@ -44,7 +44,9 @@ void Tree::generateRandomTreeRecurse(int deep){
 
     if (deep < maxDeep){
         int random = rand() % 4;
-        // cout <<"case"<< random <<endl;
+        if (deep < maxDeep/2 && random ==3)
+            random--;
+        cout <<"case"<< random <<endl;
         switch (random){
             case 0:
                 subTreeL = new Tree("5");
@@ -95,7 +97,14 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
     subTreeR = newSubTreeR;
 }
 Tree::Tree(Tree const& tree){
-    // TODO delete subTree if *p != NULL
+    if(subTreeL == NULL){
+        delete subTreeL;
+        subTreeL = NULL;
+    }
+    if(subTreeR == NULL){
+        delete subTreeR;
+        subTreeR = NULL;
+    }
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
@@ -126,7 +135,7 @@ bool Tree::operator==(Tree const& other){
     bool equal = false;
     if(this->getSubTreeR() != NULL){
         if(other.getSubTreeR()!=NULL){
-            equal = this->getSubTreeR() == other.getSubTreeR();
+            equal = (*this->getSubTreeR() == *other.getSubTreeR());
         }
             else{
                 equal = false;
@@ -140,7 +149,7 @@ bool Tree::operator==(Tree const& other){
     if(equal){
         if(this->getSubTreeL()!=NULL){
             if(other.getSubTreeL()!=NULL){
-                equal = this->getSubTreeL() == other.getSubTreeL();
+                equal = (*this->getSubTreeL() == *other.getSubTreeL());
             }
                 else{
                     equal = false;
@@ -157,7 +166,10 @@ bool Tree::operator==(Tree const& other){
 
 Tree &Tree::operator=(const Tree &tree)
 {
-    // TODO delete subTree if *p != NULL
+    if(subTreeL == NULL)
+        delete subTreeL;
+    if(subTreeR == NULL)
+        delete subTreeR;
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
