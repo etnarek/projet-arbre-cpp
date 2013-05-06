@@ -5,13 +5,14 @@
 #include <iostream>
 #include <ctime> 
 #include <cstdlib>
-#include <stdio.h>
+#include <sstream>
 
 class Tree
 {
 public:
     // Constructeurs
-    Tree(std::string newInfo = "", Tree *newSubTreeL = NULL, Tree *newSubTreeR = NULL);
+    Tree();
+    Tree(std::string newInfo, Tree *newSubTreeL = NULL, Tree *newSubTreeR = NULL);
     Tree(Tree const& tree);
 
     // Getteurs
@@ -26,17 +27,23 @@ public:
     void generateRandomTreeRecurse(int deep);
     void generateRandomTree();
     void delation(bool left);
+
     bool operator==(Tree const& other);
     Tree &operator=(const Tree &);
 
     // destructeur
     ~Tree();
 
+    static int maxDeep;
+
 private:
     Tree *subTreeL;
     Tree *subTreeR;
     std::string info;
-    static int maxDeep;
+    static int greaterInfo;
+
+    static std::string intToString(int value);
+    static int stringToInt(std::string value);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "Tree.hpp"
 
 int Tree::maxDeep = 10;
+int Tree::greaterInfo = 0;
 
 using namespace std;
 
@@ -20,13 +21,22 @@ string Tree::getInfo(){
 void Tree::setSubTreeL(Tree *newLeft){
     delete subTreeL;
     subTreeL = newLeft;
+    int max = stringToInt(newLeft->getInfo());
+    if(max>greaterInfo)
+        greaterInfo = max;
 }
 void Tree::setSubTreeR(Tree *newRight){
     delete subTreeR;
     subTreeR = newRight;
+    int max = stringToInt(newRight->getInfo());
+    if(max>greaterInfo)
+        greaterInfo = max;
 }
 void Tree::setInfo(string newInfo){
     info = newInfo;
+    int max = stringToInt(newInfo);
+    if(max>greaterInfo)
+        greaterInfo = max;
 }
 void Tree::generateRandomTree(){
         srand(time(0));
@@ -40,39 +50,41 @@ void Tree::generateRandomTree(){
         }
         generateRandomTreeRecurse(0);
 }
-void Tree::generateRandomTreeRecurse(int deep){
 
+
+void Tree::generateRandomTreeRecurse(int deep){
     if (deep < maxDeep){
         int random = rand() % 4;
+        string newInfo;
         if (deep < maxDeep/2 && random ==3)
             random--;
         switch (random){
             case 0:
-                subTreeL = new Tree("5");
-                subTreeR = new Tree("6");
+                greaterInfo++;
+                newInfo = intToString(greaterInfo);
+                subTreeL = new Tree(newInfo);
+                greaterInfo++;
+                newInfo = intToString(greaterInfo);
+                subTreeR = new Tree(newInfo);
                 subTreeL->generateRandomTreeRecurse(deep + 1);
                 subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
             case 1:
-                subTreeL = new Tree("7");
+                greaterInfo++;
+                newInfo = intToString(greaterInfo);
+                subTreeL = new Tree(newInfo);
                 subTreeR = NULL;
                 subTreeL->generateRandomTreeRecurse(deep + 1);
                 break;
             case 2:
-                subTreeR = new Tree("8");
+                greaterInfo++;
+                newInfo = intToString(greaterInfo);
+                subTreeR = new Tree(newInfo);
                 subTreeL = NULL;
                 subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
         }
     }
-
-    // TODO: lettre toujours plus grand
-
-    // int current = 1;
-    // char letter[2];
-
-    // sprintf(letter, "%d", ++current);
-    // node.setSubTreeR(new Tree(letter));
 }
 void Tree::delation(bool left){
     if(left){
@@ -88,12 +100,37 @@ void Tree::delation(bool left){
         }
     }
 }
+string Tree::intToString(int value){
+    ostringstream oss;
+    oss << value;
+    return oss.str();
+    return "";
+}
+int Tree::stringToInt(string value){
+    if(!isdigit(value[value.size()-1]))
+        value = value.substr(0, value.size()-1);
+    istringstream iss(value);
+    int number;
+    iss >> number;
+    return number;
+    return 5;
+}
 
 // Constructeurs
+Tree::Tree(){
+    subTreeL = NULL;
+    subTreeR = NULL;
+    greaterInfo++;
+    info = intToString(greaterInfo);
+
+}
 Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
     info = newInfo;
     subTreeL = newSubTreeL;
     subTreeR = newSubTreeR;
+    int max = stringToInt(newInfo);
+    if(max>greaterInfo)
+        greaterInfo = max;
 }
 Tree::Tree(Tree const& tree){
     if(subTreeL == NULL){

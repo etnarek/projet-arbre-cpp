@@ -1,3 +1,7 @@
+// TODO faire un diff du main des assistants et celui-ci
+// TODO Optimiser le code?
+// TODO print cout des arbres?
+
 #include <iostream>
 #include "Tree.hpp"
 #include "SplitGame.hpp"
@@ -44,5 +48,3 @@ int main()
 	
 	return 0;
 }
-
-// TODO erreur de segmentation, probème avec le generateRandomTree pour initial
