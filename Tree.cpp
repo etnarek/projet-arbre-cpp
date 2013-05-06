@@ -32,41 +32,35 @@ void Tree::setInfo(string newInfo){
     info = newInfo;
 }
 
-void Tree::generateRandomTree(){ //////////////////////////////////////////////////////////////// problem avec les current non transf en int.
+void Tree::generateRandomTree(int deep){
     srand(time(0));
-    int current = 1;
-    info = current;
-    int i=0;
-    Tree node = *this;
-    bool end = false;
-    int random = 0;
-    char letter[2];
-
-    while(i<maxDeep && !end){
-        random = rand() % 4;
+    if (deep < maxDeep){
+        int random = rand() % 4;
         switch (random){
             case 0:
-                sprintf(letter, "%d", ++current);
-                node.setSubTreeL(new Tree(letter));
-                sprintf(letter, "%d", ++current);
-                node.setSubTreeR(new Tree(letter));
-                if(rand()%2)
-                    node = *node.getSubTreeL();
-                else
-                    node = *node.getSubTreeR();
+                subTreeL = new Tree("lettre++");
+                subTreeR = new Tree("lettre++");
+                subTreeL->generateRandomTree(deep + 1);
+                subTreeR->generateRandomTree(deep + 1);
                 break;
             case 1:
-                sprintf(letter, "%d", ++current);
-                node.setSubTreeL(new Tree(letter));
-                node = *node.getSubTreeL();
+                subTreeL = new Tree("lettre++");
+                subTreeL->generateRandomTree(deep + 1);
+                break;
             case 2:
-                sprintf(letter, "%d", ++current);
-                node.setSubTreeR(new Tree(letter));
-                node = *node.getSubTreeR();
-            default:
-                end = true;
+                subTreeR = new Tree("lettre++");
+                subTreeR->generateRandomTree(deep + 1);
+                break;
         }
     }
+
+    // TODO: lettre toujours plus grand
+
+    // int current = 1;
+    // char letter[2];
+
+    // sprintf(letter, "%d", ++current);
+    // node.setSubTreeR(new Tree(letter));
 }
 void Tree::delation(bool left){
     if(left){
