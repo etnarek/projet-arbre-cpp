@@ -27,6 +27,7 @@ public:
     void generateRandomTree();
     void delation(bool left);
     bool operator==(Tree const& other);
+    Tree &operator=(const Tree &);
 
     // destructeur
     ~Tree();

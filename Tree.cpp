@@ -153,3 +153,21 @@ bool Tree::operator==(Tree const& other){
     }
     return equal;
 }
+
+Tree &Tree::operator=(const Tree &tree)
+{
+    info = tree.info;
+    if(tree.getSubTreeL() != NULL){
+        subTreeL = new Tree(*tree.getSubTreeL());
+    }
+    else{
+        subTreeL = NULL;
+    }
+    if(tree.getSubTreeR() != NULL){
+        subTreeR = new Tree(*tree.getSubTreeR());
+    }
+    else{
+        subTreeR = NULL;
+    }
+    return *this;
+}

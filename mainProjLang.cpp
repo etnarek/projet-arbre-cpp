@@ -8,7 +8,6 @@ const int nbMaxTry=35;
 
 int main()
 {
-	srand(time(0));
 	Tree initial,C,*ref,*ref2;
 	
 	
