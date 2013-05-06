@@ -136,13 +136,16 @@ bool Tree::operator==(Tree const& other){
         if(other.getSubTreeR()!=NULL){
             equal = (*this->getSubTreeR() == *other.getSubTreeR());
         }
-            else{
-                equal = false;
-            }
-        }   
+        else{
+            equal = false;
+        }
+    }   
     else{
         if(other.getSubTreeR() == NULL){
             equal = true;
+        }
+        else{
+            equal = false;
         }
     }
     if(equal){
@@ -150,13 +153,16 @@ bool Tree::operator==(Tree const& other){
             if(other.getSubTreeL()!=NULL){
                 equal = (*this->getSubTreeL() == *other.getSubTreeL());
             }
-                else{
-                    equal = false;
-                }
+            else{
+                equal = false;
+            }
         }
         else{
             if(other.getSubTreeL() == NULL){
                 equal = true;
+            }
+            else{
+                equal = false;
             }
         }
     }
