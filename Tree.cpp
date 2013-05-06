@@ -95,6 +95,7 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
     subTreeR = newSubTreeR;
 }
 Tree::Tree(Tree const& tree){
+    // TODO delete subTree if *p != NULL
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
@@ -156,6 +157,7 @@ bool Tree::operator==(Tree const& other){
 
 Tree &Tree::operator=(const Tree &tree)
 {
+    // TODO delete subTree if *p != NULL
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
