@@ -23,7 +23,8 @@ public:
     void setSubTreeR(Tree *newRight);
     void setInfo(std::string newInfo);
 
-    void generateRandomTree();
+    void generateRandomTree(int deep = 0);
+    void delation(bool left);
     bool operator==(Tree const& other);
 
     // destructeur

@@ -68,6 +68,20 @@ void Tree::generateRandomTree(){ ///////////////////////////////////////////////
         }
     }
 }
+void Tree::delation(bool left){
+    if(left){
+        if(subTreeL != NULL){
+            delete subTreeL;
+            subTreeL = NULL;
+        }
+    }
+    else{
+        if(subTreeR != NULL){
+            delete subTreeR;
+            subTreeR = NULL;
+        }
+    }
+}
 
 // Constructeurs
 Tree::Tree(){

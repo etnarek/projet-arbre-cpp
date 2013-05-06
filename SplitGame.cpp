@@ -27,7 +27,7 @@ int SplitGame::trigRecurse(Tree *tree){
         case 's':
             return 3;
         default:
-            bool treeL, treeR =false;
+            int treeL, treeR = 0;
             if(tree->getSubTreeL() != NULL)
                 treeL = trigRecurse(tree->getSubTreeL());
             if(tree->getSubTreeR() != NULL)
@@ -60,14 +60,7 @@ int SplitGame::trigRecurse(Tree *tree){
 
 }
 void SplitGame::delation(Tree *tree, bool left){
-    if(left){
-        delete tree->getSubTreeL();
-        tree->setSubTreeL(NULL);
-    }
-    else{
-        delete tree->getSubTreeR();
-        tree->setSubTreeR(NULL);
-    }
+    tree->delation(left);
 }
 void SplitGame::extend(Tree *tree, bool left){
 
