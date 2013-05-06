@@ -46,7 +46,6 @@ void Tree::generateRandomTreeRecurse(int deep){
         int random = rand() % 4;
         if (deep < maxDeep/2 && random ==3)
             random--;
-        cout <<"case"<< random <<endl;
         switch (random){
             case 0:
                 subTreeL = new Tree("5");

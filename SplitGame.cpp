@@ -63,6 +63,22 @@ void SplitGame::delation(Tree *tree, bool left){
     tree->delation(left);
 }
 void SplitGame::extend(Tree *tree, bool left){
+    Tree *newNode;
+    newNode = new Tree();
+    Tree *oldNode;
+    if(left){
+        oldNode = tree->getSubTreeL();
+    }
+    else{
+        oldNode = tree->getSubTreeR();
+    }
+
+    if(oldNode->getSubTreeL() != NULL)
+        newNode->setSubTreeL(oldNode->getSubTreeL());
+    if(oldNode->getSubTreeR() != NULL)
+        newNode->setSubTreeR(oldNode->getSubTreeR());
+    oldNode->setSubTreeR(NULL);
+    oldNode->setSubTreeL(newNode);
 
 }
 void SplitGame::split(Tree *tree, bool left){
