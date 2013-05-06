@@ -28,32 +28,39 @@ void Tree::setSubTreeR(Tree *newRight){
 void Tree::setInfo(string newInfo){
     info = newInfo;
 }
-
-void Tree::generateRandomTree(int deep){
+void Tree::generateRandomTree(){
+        srand(time(0));
+        if(subTreeR != NULL){
+            delete subTreeR;
+            subTreeR = NULL;
+        }
+        if(subTreeL != NULL){
+            delete subTreeL;
+            subTreeL = NULL;
+        }
+        generateRandomTreeRecurse(0);
+}
+void Tree::generateRandomTreeRecurse(int deep){
 
     if (deep < maxDeep){
-        int random =1; //rand() % 4;
+        int random = rand() % 4;
         // cout <<"case"<< random <<endl;
         switch (random){
             case 0:
                 subTreeL = new Tree("5");
-                cout << "subTreeR"<<subTreeR<<endl;
                 subTreeR = new Tree("6");
-                cout << "subTreeL"<<subTreeL<<endl;
-                subTreeL->generateRandomTree(deep + 1);
-                subTreeR->generateRandomTree(deep + 1);
+                subTreeL->generateRandomTreeRecurse(deep + 1);
+                subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
             case 1:
                 subTreeL = new Tree("7");
                 subTreeR = NULL;
-                cout << "subTreeR"<<subTreeR<<endl;
-                cout << "subTreeL"<<subTreeL<<endl;
-                subTreeL->generateRandomTree(deep + 1);
+                subTreeL->generateRandomTreeRecurse(deep + 1);
                 break;
             case 2:
                 subTreeR = new Tree("8");
                 subTreeL = NULL;
-                subTreeR->generateRandomTree(deep + 1);
+                subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
         }
     }
