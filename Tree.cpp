@@ -1,7 +1,4 @@
 #include "Tree.hpp"
-#include <ctime> 
-#include <cstdlib>
-#include <stdio.h>
 
 int Tree::maxDeep = 10;
 
@@ -33,22 +30,27 @@ void Tree::setInfo(string newInfo){
 }
 
 void Tree::generateRandomTree(int deep){
-    srand(time(0));
+
     if (deep < maxDeep){
-        int random = rand() % 4;
+        int random =1; //rand() % 4;
+        // cout <<"case"<< random <<endl;
         switch (random){
             case 0:
-                subTreeL = new Tree("lettre++");
-                subTreeR = new Tree("lettre++");
+                subTreeL = new Tree("5");
+                cout << "subTreeR"<<subTreeR<<endl;
+                subTreeR = new Tree("6");
+                cout << "subTreeL"<<subTreeL<<endl;
                 subTreeL->generateRandomTree(deep + 1);
                 subTreeR->generateRandomTree(deep + 1);
                 break;
             case 1:
-                subTreeL = new Tree("lettre++");
+                subTreeL = new Tree("7");
+                cout << "subTreeR"<<subTreeR<<endl;
+                cout << "subTreeL"<<subTreeL<<endl;
                 subTreeL->generateRandomTree(deep + 1);
                 break;
             case 2:
-                subTreeR = new Tree("lettre++");
+                subTreeR = new Tree("8");
                 subTreeR->generateRandomTree(deep + 1);
                 break;
         }
@@ -93,12 +95,13 @@ Tree::Tree(string newInfo, Tree *newSubTreeL){
     subTreeL = newSubTreeL;
     subTreeR = NULL;
 }
-Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *snewSbTreeR){
+Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
     info = newInfo;
     subTreeL = newSubTreeL;
-    subTreeR = snewSbTreeR;
+    subTreeR = newSubTreeR;
 }
 Tree::Tree(Tree const& tree){
+    cout<<"copy"<<endl;
     info = tree.info;
     if(tree.getSubTreeL() != NULL){
         subTreeL = new Tree(*tree.getSubTreeL());
@@ -117,9 +120,11 @@ Tree::Tree(Tree const& tree){
 // Destructeur
 Tree::~Tree(){
     if(subTreeL != NULL){
+        cout<<"left"<<subTreeL<<endl;
         delete subTreeL;
     }
     if(subTreeR != NULL){
+        cout << "right"<<subTreeR<<endl;
         delete subTreeR;
     }
 }

@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include <ctime> 
+#include <cstdlib>
+#include <stdio.h>
 
 class Tree
 {
