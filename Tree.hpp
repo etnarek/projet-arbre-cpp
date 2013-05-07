@@ -37,7 +37,7 @@ public:
     // destructeur
     ~Tree();
 
-    static int maxDeep; // Taille maximum d'un arbre lors de l'appel de generateRandomTree.
+    static const int maxDeep; // Taille maximum d'un arbre lors de l'appel de generateRandomTree.
 
 private:
     Tree *subTreeL;

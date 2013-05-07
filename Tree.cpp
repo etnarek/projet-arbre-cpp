@@ -1,6 +1,6 @@
 #include "Tree.hpp"
 
-int Tree::maxDeep = 10;
+const int Tree::maxDeep = 10;
 int Tree::greaterInfo = 0;
 
 using namespace std;
