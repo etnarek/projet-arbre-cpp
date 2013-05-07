@@ -38,18 +38,6 @@ void Tree::setInfo(string newInfo){
     if(max>greaterInfo)
         greaterInfo = max;
 }
-void Tree::generateRandomTree(){
-        srand(time(0));
-        if(subTreeR != NULL){
-            delete subTreeR;
-            subTreeR = NULL;
-        }
-        if(subTreeL != NULL){
-            delete subTreeL;
-            subTreeL = NULL;
-        }
-        generateRandomTreeRecurse(0);
-}
 
 void Tree::generateRandomTree(){
         srand(time(0));
