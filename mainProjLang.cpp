@@ -1,3 +1,7 @@
+// TODO faire un diff du main des assistants et celui-ci
+// TODO Optimiser le code?
+// TODO print cout des arbres?
+
 #include <iostream>
 #include "Tree.hpp"
 #include "SplitGame.hpp"
@@ -10,8 +14,9 @@ int main()
 {
 	Tree initial,C,*ref,*ref2;
 	
-	initial.generateRandomTree();
 	
+	initial.generateRandomTree();
+	cout<<"copy initial to final"<<endl;
 	Tree final=initial;
 
 	SplitGame Game1(initial,final,nbMaxTry);
@@ -28,7 +33,7 @@ int main()
 	SplitGame Game3(*ref,*ref2,nbMaxTry);
 	Game3.trig(); // "déclenchement" des noeuds speciaux
 	cout<< "Les arbres ne sont pas identiques en terme de structure: " << Game3.isIdentic() << endl;
-	
+
 	cout<<"Le noeud racine a pour etiquette" << ref->getInfo()<<endl;
 	if(ref->getSubTreeL()!=NULL)
 		cout<<"Le noeud racine du ss-arbre gauche a pour etiquette" << ref->getSubTreeL()->getInfo()<<endl;

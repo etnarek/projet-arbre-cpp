@@ -27,7 +27,7 @@ int SplitGame::trigRecurse(Tree *tree){
         case 's':
             return 3;
         default:
-            bool treeL, treeR =false;
+            int treeL, treeR = 0;
             if(tree->getSubTreeL() != NULL)
                 treeL = trigRecurse(tree->getSubTreeL());
             if(tree->getSubTreeR() != NULL)
@@ -60,18 +60,50 @@ int SplitGame::trigRecurse(Tree *tree){
 
 }
 void SplitGame::delation(Tree *tree, bool left){
-    if(left){
-        delete tree->getSubTreeL();
-        tree->setSubTreeL(NULL);
-    }
-    else{
-        delete tree->getSubTreeR();
-        tree->setSubTreeR(NULL);
-    }
+    tree->delation(left);
 }
 void SplitGame::extend(Tree *tree, bool left){
+    Tree *newNode;
+    newNode = new Tree();
+    Tree *oldNode;
+    if(left){
+        oldNode = tree->getSubTreeL();
+    }
+    else{
+        oldNode = tree->getSubTreeR();
+    }
+
+    if(oldNode->getSubTreeL() != NULL)
+        newNode->setSubTreeL(oldNode->getSubTreeL());
+    if(oldNode->getSubTreeR() != NULL)
+        newNode->setSubTreeR(oldNode->getSubTreeR());
+    oldNode->setSubTreeR(NULL);
+    oldNode->setSubTreeL(newNode);
+    if(left){
+        tree->setSubTreeL(newNode);
+    }
+    else{
+        tree->setSubTreeR(newNode);
+    }
 
 }
 void SplitGame::split(Tree *tree, bool left){
+    Tree *oldNode;
+    Tree *newNode;
+    newNode = new Tree();
+    if(left){
+        oldNode = tree->getSubTreeL();
+    }
+    else{
+        oldNode = tree->getSubTreeR();
+    }
+    newNode->setSubTreeL(oldNode);
+    newNode->setSubTreeR(new Tree(*oldNode));
+    if(left){
+        tree->setSubTreeL(newNode);
+    }
+    else{
+        tree->setSubTreeR(newNode);
+    }
 
 }
