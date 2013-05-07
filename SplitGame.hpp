@@ -20,6 +20,7 @@ private:
     Tree *startTree;
     const Tree *endTree;
     
+    // Functions appelé par trig et permettant de jouer (modifie l'arbre).
     static int trigRecurse(Tree *tree);
     static void delation(Tree *tree, bool left);
     static void extend(Tree *tree, bool left);

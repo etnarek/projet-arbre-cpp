@@ -19,29 +19,34 @@ public:
     Tree * getSubTreeL() const;
     Tree * getSubTreeR() const;
     std::string getInfo();
+    
     // Setteurs
     void setSubTreeL(Tree *newLeft);
     void setSubTreeR(Tree *newRight);
     void setInfo(std::string newInfo);
 
+    // Functions spécifiques
     void generateRandomTreeRecurse(int deep);
     void generateRandomTree();
     void delation(bool left);
 
+    // Surcharge d'opérateur
     bool operator==(Tree const& other);
     Tree &operator=(const Tree &);
 
     // destructeur
     ~Tree();
 
-    static int maxDeep;
+    static int maxDeep; // Taille maximum d'un arbre lors de l'appel de generateRandomTree.
 
 private:
     Tree *subTreeL;
     Tree *subTreeR;
     std::string info;
-    static int greaterInfo;
 
+    static int greaterInfo; // sert à stocker le numéro du plus grand noeud (pour creer les nouveaux plus haut).
+
+    // Functions spécifiques
     static std::string intToString(int value);
     static int stringToInt(std::string value);
 };

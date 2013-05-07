@@ -17,6 +17,9 @@ void SplitGame::trig(){
     trigRecurse(startTree);
 }
 int SplitGame::trigRecurse(Tree *tree){
+    // Si n rencontre un noed spécial, on retourne le valeur correspondante.
+    // En function de la valeur, on appelle la function correspondante.
+    // (avec left à true si le noeud spécial est à gauche, false sinon).
     string info = tree->getInfo();
     char lettre = info[info.size()-1];
     switch (lettre){
@@ -26,8 +29,10 @@ int SplitGame::trigRecurse(Tree *tree){
             return 2;
         case 's':
             return 3;
+            
         default:
-            int treeL, treeR = 0;
+            int treeL = 0;
+            int treeR = 0;
             if(tree->getSubTreeL() != NULL)
                 treeL = trigRecurse(tree->getSubTreeL());
             if(tree->getSubTreeR() != NULL)
@@ -60,9 +65,11 @@ int SplitGame::trigRecurse(Tree *tree){
 
 }
 void SplitGame::delation(Tree *tree, bool left){
+    // Supprime un noeud dans l'arbre
     tree->delation(left);
 }
 void SplitGame::extend(Tree *tree, bool left){
+    // Ajoute un noeud dans l'arbre
     Tree *newNode;
     newNode = new Tree();
     Tree *oldNode;
@@ -88,6 +95,7 @@ void SplitGame::extend(Tree *tree, bool left){
 
 }
 void SplitGame::split(Tree *tree, bool left){
+    // Duplique le sous arbre
     Tree *oldNode;
     Tree *newNode;
     newNode = new Tree();

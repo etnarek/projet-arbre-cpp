@@ -39,54 +39,66 @@ void Tree::setInfo(string newInfo){
         greaterInfo = max;
 }
 
+// Functions de la classe
 void Tree::generateRandomTree(){
-        srand(time(0));
-        if(subTreeR != NULL){
-            delete subTreeR;
-            subTreeR = NULL;
-        }
-        if(subTreeL != NULL){
-            delete subTreeL;
-            subTreeL = NULL;
-        }
-        generateRandomTreeRecurse(0);
+    // Préparation pour l'appel à generateRandomTreeRecurse
+    srand(time(0));
+    if(subTreeR != NULL){
+        delete subTreeR;
+        subTreeR = NULL;
+    }
+    if(subTreeL != NULL){
+        delete subTreeL;
+        subTreeL = NULL;
+    }
+    generateRandomTreeRecurse(0);
 }
-
 void Tree::generateRandomTreeRecurse(int deep){
     if (deep < maxDeep){
         int random = rand() % 4;
-        string newInfo;
-        if (deep < maxDeep/2 && random ==3)
-            random--;
+        string newInfo = "";
         switch (random){
+            // Une chance sur 4 pour etre dans chacun des cas.
             case 0:
+                // Création des sous arbres avec comme info greaterInfo++
                 greaterInfo++;
                 newInfo = intToString(greaterInfo);
                 subTreeL = new Tree(newInfo);
                 greaterInfo++;
                 newInfo = intToString(greaterInfo);
                 subTreeR = new Tree(newInfo);
+
+                // Appel récursif sur les sous arbres crées précédement
                 subTreeL->generateRandomTreeRecurse(deep + 1);
                 subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
+
             case 1:
+                // Création des sous arbres avec comme info greaterInfo++
                 greaterInfo++;
                 newInfo = intToString(greaterInfo);
                 subTreeL = new Tree(newInfo);
                 subTreeR = NULL;
+
+                // Appel récursif sur les sous arbres crées précédement
                 subTreeL->generateRandomTreeRecurse(deep + 1);
                 break;
+
             case 2:
+                // Création des sous arbres avec comme info greaterInfo++
                 greaterInfo++;
                 newInfo = intToString(greaterInfo);
                 subTreeR = new Tree(newInfo);
                 subTreeL = NULL;
+
+                // Appel récursif sur les sous arbres crées précédement
                 subTreeR->generateRandomTreeRecurse(deep + 1);
                 break;
         }
     }
 }
 void Tree::delation(bool left){
+    // Supprime un noeud et tous ces sous noeuds de l'arbre
     if(left){
         if(subTreeL != NULL){
             delete subTreeL;
@@ -101,16 +113,18 @@ void Tree::delation(bool left){
     }
 }
 string Tree::intToString(int value){
+    // Utilisation des flux pour transformer un int en string
     ostringstream oss;
     oss << value;
     return oss.str();
     return "";
 }
 int Tree::stringToInt(string value){
+    // Utilisation des flux pour transformer un string en int
     if(!isdigit(value[value.size()-1]))
         value = value.substr(0, value.size()-1);
     istringstream iss(value);
-    int number;
+    int number = 0;
     iss >> number;
     return number;
     return 5;
@@ -118,6 +132,7 @@ int Tree::stringToInt(string value){
 
 // Constructeurs
 Tree::Tree(){
+    // Constructeur si aucune info n'es spécifiée
     subTreeL = NULL;
     subTreeR = NULL;
     greaterInfo++;
@@ -125,6 +140,7 @@ Tree::Tree(){
 
 }
 Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
+    // Constructeur si on spécifie au moins l'info
     info = newInfo;
     subTreeL = newSubTreeL;
     subTreeR = newSubTreeR;
@@ -133,6 +149,7 @@ Tree::Tree(string newInfo, Tree *newSubTreeL, Tree *newSubTreeR){
         greaterInfo = max;
 }
 Tree::Tree(Tree const& tree){
+    // Constructeur de copy
     if(subTreeL == NULL){
         delete subTreeL;
         subTreeL = NULL;
@@ -168,6 +185,7 @@ Tree::~Tree(){
 
 // Surcharge d'opérateur
 bool Tree::operator==(Tree const& other){
+    // Regarde si la structure des deux arbre est identique.
     bool equal = false;
     if(this->getSubTreeR() != NULL){
         if(other.getSubTreeR()!=NULL){
